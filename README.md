@@ -21,4 +21,4 @@ This is included as a R package, and can be found in
 
 Requirements:
 R 3.4.2 or higher
-
+R package "minpack.lm"
