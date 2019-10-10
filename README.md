@@ -9,6 +9,9 @@ There are two components: 1. the downsampling
 
 Downsampling:
 
+A downsampling method based on Combinatorics Math. 
+Reasoning can be found: 
+
 This is included as python2.7 package included in downsample folder.
 
 Requirements:
@@ -16,6 +19,9 @@ Python2.7
 
 
 Up-projection:
+
+A upsampling projection method based on Math Analysis and non-linear model fitting.
+Reasong can be found:
 
 This is included as a R package, and can be found in upsample folder.
 
