@@ -9,7 +9,7 @@ There are two components: 1. the downsampling
 
 Downsampling:
 
-This is included as python2.7 package included in ,
+This is included as python2.7 package included in downsample folder.
 
 Requirements:
 Python2.7
@@ -17,7 +17,7 @@ Python2.7
 
 Up-projection:
 
-This is included as a R package, and can be found in 
+This is included as a R package, and can be found in upsample folder.
 
 Requirements:
 R 3.4.2 or higher
