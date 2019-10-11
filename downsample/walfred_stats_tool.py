@@ -2,7 +2,7 @@
 
 import numpy as np
 
-
+#this is the custom instance for larger precision for float number
 class precis:
 	def __init__(self):
 		
