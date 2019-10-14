@@ -11,7 +11,7 @@ setuptools.setup(
 	description="NUI projection tool based on recapture model",
 	long_description=long_description,
 	long_description_content_type="text/markdown",
-	url="https://github.com/WalfredMA/Saturation-Projection-for-NUI-insertion-discovery/tree/master/downsample",
+	url="https://github.com/WalfredMA/Saturation-Projection-for-NUI-insertion-discovery/tree/master/",
 	packages=setuptools.find_packages(),
 	python_requires='>=2.7',
 )
