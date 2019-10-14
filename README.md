@@ -1,7 +1,11 @@
 # Saturation-Projection-for-NUI-insertion-discovery
 
 This is the a method used to projection of NUI discoveries respect sample sizes.
-All codes have been incorporated as packages. 
+
+Requirements:
+Python 2.7
+scipy 1.20 or higher
+
 
 There are two components: 1. the downsampling 
                           2. up-projection based on downsampling
@@ -14,17 +18,9 @@ Reasoning can be found:
 
 This is included as python2.7 package included in downsample folder.
 
-Requirements:
-Python2.7
-
 
 Up-projection:
 
 A upsampling projection method based on Math Analysis and non-linear model fitting.
-Reasong can be found:
+Reasoning can be found:
 
-This is included as a R package, and can be found in upsample folder.
-
-Requirements:
-R 3.4.2 or higher
-R package "minpack.lm"
