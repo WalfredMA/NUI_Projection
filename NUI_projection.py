@@ -3,9 +3,9 @@
 import pandas as pd
 import numpy as np
 import scipy.misc
+from scipy.optimize import curve_fit
 import math
 import collections as cl
-from scipy.optimize import curve_fit
 import walfred_stats_tool as wal
 
 #the instance used for downsampling 
