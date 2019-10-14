@@ -2,7 +2,7 @@
 
 import pandas as pd
 import numpy as np
-import scipy.misc
+from scipy.misc import comb as combination
 from scipy.optimize import curve_fit
 import math
 import collections as cl
@@ -51,7 +51,7 @@ class NUI_projection:
 			self.last_Aseries=self.current_Aseries
 			
 			#find series V at down sample size based on series A
-			row=[scipy.misc.comb(sample_size,count)*Aseries for count,Aseries in self.current_Aseries.items()]
+			row=[combination(sample_size,count)*Aseries for count,Aseries in self.current_Aseries.items()]
 			
 			df_proj.append(row)
 			
