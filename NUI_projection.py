@@ -66,34 +66,37 @@ class NUI_projection:
 		
 		return self
 	
-	def upsample(self,targetsize,inits=[1000.0,0.00,10.00]):
+	def upsample(self,targetsize,tail_size=10,inits=[1000.0,10.00,0.001,0.1]):
 		
-		#the mathematical model used to predict NUI dicovery number at giving smaple size
-		def incre_vs_samplesize(x, alpha, beta,gamma):
+		#Since alpha>>error>beta, we predict alpha and error together
+		def incre_vs_samplesize(x, alpha, beta,celta,gamma):
 			
-			return abs(alpha)/(x-1)+(10**beta)*(x-1)+abs(gamma)
+			return  (1-abs(celta)*(x-1))*(abs(alpha)/x)+(1-abs(gamma)*(x-1))*abs(beta)
 		
-		
+		#+abs(beta)*(x-1)*(1-(x-1)*(abs(gamma)))
 		#find increment
 		self.SVincre=[self.SVcounts[0]]+[x-y for x,y in zip(self.SVcounts[1:], self.SVcounts)]
 		
 		obs_sample_sizes=range(2,self.current_size+1)		
 		
+		betas=[]
+		
 		#load x and y values
-		xdata=obs_sample_sizes[-10:]
-		ydata=self.SVincre[-10:]
+		xdata=obs_sample_sizes[-tail_size:]
+		ydata=self.SVincre[-tail_size:]
 		
 		#fitting to find parameters
-		para_fits = curve_fit(incre_vs_samplesize, xdata=xdata, ydata=ydata, p0=inits,method='lm')[0]
+		
+		para_fits = curve_fit(incre_vs_samplesize, xdata=xdata, ydata=ydata, p0=inits,method='lm',maxfev=100000)[0]
 		
 		self.para_fits=para_fits
 		
-		print 'fitted model: %f/x+%f*x+%f'%(abs(para_fits[0]), 2**para_fits[1], abs(para_fits[2]))
-		
+		print 'fitted model:(%f/x)*(1-%f)^(x-1)+%f*(1-%f)^(x-1)'%(abs(para_fits[0]),abs(para_fits[2]), abs(para_fits[1]),abs(para_fits[3]))
+
 		#redefine model 
-		def incre_vs_samplesize(x, alpha=abs(para_fits[0]), beta=2**para_fits[1],gamma=abs(para_fits[2])):
+		def incre_vs_samplesize(x, alpha=abs(para_fits[0]), beta=abs(para_fits[1]), celta=abs(para_fits[2]), gamma=abs(para_fits[3])):
 			
-			return alpha/(x-1)+beta*(x-1)+gamma
+			return (1-abs(celta)*(x-1))*(abs(alpha)/x)+(1-abs(gamma)*(x-1))*abs(beta)
 		
 		
 		#projection based on model
@@ -119,7 +122,6 @@ def projection(allcounts, current_size,project_size):
 	
 	return projection
 
-	
 
 
 
