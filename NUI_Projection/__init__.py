@@ -33,7 +33,7 @@ class NUI_projection:
 		
 	
 	#used to down sampling based on sample count of SVs 
-	def downsample(self):
+	def downsample(self,outfile=''):
 		
 		#This is series of A as described in reasoning, A(sample_size,count)=V(sample_size,count)/combination(sample_size,count)
 		#here we use log value to make sure it will not break the maximum integet size, to enhance the accuracy (python2 can only extend to 17 digits, but we are not sure if this is enough for log values), we used my own components to extend precisions.
@@ -55,23 +55,26 @@ class NUI_projection:
 			
 			df_proj.append(row)
 			
-		#make it to be a dataframe
-		self.downsample= pd.DataFrame.from_records(df_proj).T
-		self.downsample.columns= range(2,self.current_size+1)[::-1]
-		
+		if len(outfile):
+			#make it to be a dataframe
+			self.downsample= pd.DataFrame.from_records(df_proj).T
+			self.downsample.columns= range(2,self.current_size+1)[::-1]
+			self.downsample.to_csv(outfile,mode='w',sep=',',index=False)
+			
 		
 		#sum up to find all expect NUIs at each sample size 
 		self.SVcounts=map(sum,df_proj)[::-1]
 	
 		
 		return self
+		
 	
 	def upsample(self,targetsize,tail_size=10,inits=[1000.0,10.00,0.001,0.1]):
 		
 		#Since alpha>>error>beta, we predict alpha and error together
 		def incre_vs_samplesize(x, alpha, beta,celta,gamma):
 			
-			return  (1-abs(celta)*(x-1))*(abs(alpha)/x)+(1-abs(gamma)*(x-1))*abs(beta)
+			return  (1-abs(celta)*(x-1))*(abs(alpha)/x)+(1-abs(gamma)*(x-2))*abs(beta)
 		
 		#+abs(beta)*(x-1)*(1-(x-1)*(abs(gamma)))
 		#find increment
@@ -115,19 +118,16 @@ class NUI_projection:
 		
 		return self
 
-#Packaging for the instance
+#downsample the the datasets
+def downsample(allcounts, current_size,outfile):
+	
+	projection=NUI_projection(current_size).count(allcounts).downsample(outfile).downsample
+	
+	return projection
+
+#upsample project the the datasets
 def projection(allcounts, current_size,project_size):
 	
 	projection=NUI_projection(current_size).count(allcounts).downsample().upsample(project_size).allSV_proj
 	
 	return projection
-
-
-
-
-
-
-
-
-
-
