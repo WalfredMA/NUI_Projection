@@ -54,11 +54,14 @@ class NUI_projection:
 			row=[combination(sample_size,count)*Aseries for count,Aseries in self.current_Aseries.items()]
 			
 			df_proj.append(row)
-			
+		
+		#make it to be a dataframe
+		self.downsample= pd.DataFrame.from_records(df_proj).T
+		self.downsample.columns= range(2,self.current_size+1)[::-1]
+		
+		#save to file
 		if len(outfile):
-			#make it to be a dataframe
-			self.downsample= pd.DataFrame.from_records(df_proj).T
-			self.downsample.columns= range(2,self.current_size+1)[::-1]
+			
 			self.downsample.to_csv(outfile,mode='w',sep=',',index=False)
 			
 		
