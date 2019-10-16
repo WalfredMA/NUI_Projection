@@ -119,7 +119,7 @@ class NUI_projection:
 		return self
 
 #downsample the the datasets
-def downsample(allcounts, current_size,outfile):
+def downsample(allcounts, current_size,outfile=''):
 	
 	projection=NUI_projection(current_size).count(allcounts).downsample(outfile).downsample
 	
