@@ -58,6 +58,7 @@ class NUI_projection:
 		#make it to be a dataframe
 		self.downsample= pd.DataFrame.from_records(df_proj).T
 		self.downsample.columns= range(2,self.current_size+1)[::-1]
+		self.downsample.index=range(2,self.current_size+1)
 		
 		#save to file
 		if len(outfile):
