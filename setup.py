@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
 	name = 'NUI_projection',
-	version = '0.0.1',
+	version = '0.0.2',
 	author='Walfred MA',
 	description = 'NUI projection tool based on recapture model',
 	long_description=long_description,
