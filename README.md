@@ -50,7 +50,7 @@ There are two functions in this package:
 
 Used to downsample current dataset to lower sample sizes. Output is a pandas dataframe with header indicates sample sizes and index indicates number of NUIs at certain sample count. 
 
->>>downsample(allcounts=[3,2,2,4,4,6,4,4,5,6,2,4,5,6,6], current_size=6, outfile=./save_downsample.csv)
+>>> downsample(allcounts=[3,2,2,4,4,6,4,4,5,6,2,4,5,6,6], current_size=6, outfile=./save_downsample.csv)
 
      6         5    4     3         2
 2  3.0  2.500000  3.8  5.05  7.733333
