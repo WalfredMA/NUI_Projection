@@ -1,17 +1,24 @@
-import setuptools
+#!/usr/bin/python2.7
+
+from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
 	long_description = fh.read()
 
-setuptools.setup(
-	name="NUI_projection",
-	version="0.0.1",
-	author="Walfred MA",
-	author_email="wangfei.ma@ucsf.com",
-	description="NUI projection tool based on recapture model",
+
+setup(
+	name = 'NUI_projection',
+	version = '0.0.1',
+	author='Walfred MA',
+	description = 'NUI projection tool based on recapture model',
 	long_description=long_description,
 	long_description_content_type="text/markdown",
-	url="https://github.com/WalfredMA/Saturation-Projection-for-NUI-insertion-discovery/tree/master/",
-	packages=setuptools.find_packages(),
+	license = 'MIT License',
+	url = 'https://github.com/WalfredMA/NUI_Projection',
+	author_email="wangfei.ma@ucsf.com",
+	packages = find_packages(),
+	include_package_data = True,
+	platforms = 'any',
 	python_requires='>=2.7',
 )
+
