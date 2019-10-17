@@ -32,7 +32,7 @@ $ pip install
 
 2.Install via PyPi:
 
-$ pip install NUI_projection
+$ pip install -i https://test.pypi.org/simple/ NUI-projection==0.0.2
 
 
 
