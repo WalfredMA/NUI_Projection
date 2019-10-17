@@ -6,7 +6,7 @@ This is a Python2.7 Package used to project NUI discoveries respecting sample si
 
 The details for the methodology and mathematical reasoning can be found in ./NUI_projection_reasoning.pdf if interested.
 
-url:https://github.com/WalfredMA/NUI_Projection
+url: https://github.com/WalfredMA/NUI_Projection
 
 
 Requirements
