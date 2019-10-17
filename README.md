@@ -24,7 +24,9 @@ Installation
 1.Install via local files:
 
 $ cd $file_directory
+
 $ pip install
+
 
 2.Install via PyPi:
 
