@@ -105,4 +105,4 @@ License
 
 The project is licensed under the MIT License.
 
-
+Can be also found in PyPi as NUI_projection.
