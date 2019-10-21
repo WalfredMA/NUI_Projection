@@ -43,7 +43,7 @@ Usages
 Please use this package in python2.7 scripts.
 
 First import this package by:
->>>Import NUI_projection
+>>>from NUI_projection import *
 
 There are two functions in this package:
 
