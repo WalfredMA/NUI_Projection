@@ -80,7 +80,7 @@ current_size [int]; a integer gives the sample size of the current dataset.
 
 Used to project current dataset to higher sample sizes. Output: a python dict of float numbers indicates expected total non-redundant NUI found from sample size 2 ~ project_size.
 
->>> projection(allcounts=[3,2,2,4,4,6,4,4,5,6,2,4,5,6,6], current_size=6, project_size)
+>>> projection(allcounts=[3,2,2,4,4,6,4,4,5,6,2,4,5,6,6], current_size=6, project_size=10)
 {2: 7.7333333333333325, 3: 11.099999999999998, 4: 13.0, 5: 13.999999999999996, 6: 15.0, 7: 14.077785373084197, 8: 12.72647510387041, 9: 11.041423570684977, 10: 9.0893788383563319}
 
 
